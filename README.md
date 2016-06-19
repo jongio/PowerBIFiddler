@@ -14,7 +14,7 @@ The new and improved decoded and decompressed version looks something like this:
 tileData={"descriptor":{"Select":[{"Kind":2,"Value":"M0"}]},"metadata":{},"dsr":{"DataShapes":[{"Id":"DS0","PrimaryHierarchy":[{"Id":"DM0","Instances":[{"Calculations":[{"Id":"M0","Value":"10503L"}]}]}],"IsComplete":true}]}}
 ```
 
-To use, run the PowerBIFiddler.msi found on the [releases page](https://github.com/jonbgallant/PowerBIFiddler/releases). It will copy the ```PowerBIFiddler.dll``` and ```Newtonsoft.Json.dll``` files to our local ```C:\Users\\{user}\Documents\Fiddler2\Inspectors``` directory.
+To use, run the PowerBIFiddler.msi found on the [releases page](https://github.com/jonbgallant/PowerBIFiddler/releases). It will copy the ```PowerBIFiddler.dll``` and ```Newtonsoft.Json.dll``` files to our local ```C:\Users\{user}\Documents\Fiddler2\Inspectors``` directory.
 
 When you setup a real-time dashboard, Power BI will send a "subscribe" HTTP request and will get a "tiles" data response.
 
