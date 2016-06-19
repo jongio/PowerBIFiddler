@@ -5,6 +5,7 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace PowerBIFiddler
@@ -13,6 +14,7 @@ namespace PowerBIFiddler
     {
         JSONResponseViewer jsonResponseViewer;
         HTTPResponseHeaders responseHeaders;
+        bool isTileResponse = false;
 
         public byte[] body
         {
@@ -22,47 +24,49 @@ namespace PowerBIFiddler
             }
             set
             {
-                try
+                if (isTileResponse)
                 {
-                    var isEncoded = this.responseHeaders.ExistsAndContains("Content-Encoding", "gzip");
-                    if (isEncoded)
+                    try
                     {
-                        // decode body
-                        byte[] numArray = Utilities.Dupe(value);
-                        Utilities.utilDecodeHTTPBody(this.headers, ref numArray);
-                        value = numArray;
+                        var isEncoded = this.responseHeaders.ExistsAndContains("Content-Encoding", "gzip");
+                        if (isEncoded)
+                        {
+                            // decode body
+                            byte[] numArray = Utilities.Dupe(value);
+                            Utilities.utilDecodeHTTPBody(this.headers, ref numArray);
+                            value = numArray;
+                        }
+
+                        // get body as string
+                        string raw = Encoding.Default.GetString(value);
+
+                        // convert to json
+                        dynamic json = JsonConvert.DeserializeObject(raw);
+
+                        // loop through each tile and extra the base64/gziped data
+                        foreach (var tile in json)
+                        {
+                            // Trim off the curlys
+                            string trimmedData = ((string)tile.tileDataBinaryBase64Encoded).Trim("{}".ToCharArray());
+
+                            // Convert to bytes for decompressing
+                            byte[] base64Bytes = Convert.FromBase64String(trimmedData);
+
+                            // Decompress to bytes
+                            byte[] decompressedBytes = Decompress(base64Bytes);
+
+                            // Convert to string to save back to json
+                            string decompressedString = Encoding.Default.GetString(decompressedBytes);
+
+                            tile.tileData = decompressedString;
+                        }
+
+                        // serialize json back to bytes
+                        var jsonBytes = Encoding.Default.GetBytes(JsonConvert.SerializeObject(json));
+                        value = isEncoded ? Compress(jsonBytes) : jsonBytes;
                     }
-
-                    // get body as string
-                    string raw = Encoding.Default.GetString(value);
-
-                    // convert to json
-                    dynamic json = JsonConvert.DeserializeObject(raw);
-
-                    // loop through each tile and extra the base64/gziped data
-                    foreach (var tile in json)
-                    {
-                        // Trim off the curlys
-                        string trimmedData = ((string)tile.tileDataBinaryBase64Encoded).Trim("{}".ToCharArray());
-                        
-                        // Convert to bytes for decompressing
-                        byte[] base64Bytes = Convert.FromBase64String(trimmedData);
-
-                        // Decompress to bytes
-                        byte[] decompressedBytes = Decompress(base64Bytes);
-                        
-                        // Convert to string to save back to json
-                        string decompressedString = Encoding.Default.GetString(decompressedBytes);
-
-                        tile.tileData = decompressedString;
-                    }
-
-                    // serialize json back to bytes
-                    var jsonBytes = Encoding.Default.GetBytes(JsonConvert.SerializeObject(json));
-                    value = isEncoded ? Compress(jsonBytes) : jsonBytes;
+                    catch { }
                 }
-                catch { }
-
                 jsonResponseViewer.body = value;
             }
         }
@@ -115,6 +119,7 @@ namespace PowerBIFiddler
 
         public override void AssignSession(Session oS)
         {
+            SetIsTileResponse(oS);
             base.AssignSession(oS);
         }
 
@@ -144,6 +149,12 @@ namespace PowerBIFiddler
         public override void SetFontSize(float flSizeInPoints)
         {
             jsonResponseViewer.SetFontSize(flSizeInPoints);
+        }
+
+        public void SetIsTileResponse(Session oS)
+        {
+            string pathRegEx = "/powerbi/metadata/dashboard/(\\d+)/tiles";
+            isTileResponse = Regex.IsMatch(oS.PathAndQuery, pathRegEx);
         }
     }
 }
