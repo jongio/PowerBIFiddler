@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerBIFiddler", "PowerBIFiddler\PowerBIFiddler.csproj", "{03749845-24BB-4BA8-BA25-2765C3EB38E1}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{F6C16B01-6E30-4B40-99ED-CF1CAD910459}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Installer", "Installer\Installer.vdproj", "{9943EE12-36A0-470F-AB9D-2D22928D2568}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,9 +17,10 @@ Global
 		{03749845-24BB-4BA8-BA25-2765C3EB38E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03749845-24BB-4BA8-BA25-2765C3EB38E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03749845-24BB-4BA8-BA25-2765C3EB38E1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F6C16B01-6E30-4B40-99ED-CF1CAD910459}.Debug|Any CPU.ActiveCfg = Debug
-		{F6C16B01-6E30-4B40-99ED-CF1CAD910459}.Release|Any CPU.ActiveCfg = Release
-		{F6C16B01-6E30-4B40-99ED-CF1CAD910459}.Release|Any CPU.Build.0 = Release
+		{9943EE12-36A0-470F-AB9D-2D22928D2568}.Debug|Any CPU.ActiveCfg = Debug
+		{9943EE12-36A0-470F-AB9D-2D22928D2568}.Debug|Any CPU.Build.0 = Debug
+		{9943EE12-36A0-470F-AB9D-2D22928D2568}.Release|Any CPU.ActiveCfg = Release
+		{9943EE12-36A0-470F-AB9D-2D22928D2568}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
