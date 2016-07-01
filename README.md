@@ -20,7 +20,7 @@ tileData={"descriptor":{"Select":[{"Kind":2,"Value":"M0"}]},"metadata":{},"dsr":
 ### MSI
 Run the PowerBIFiddler.msi found on the [releases page](https://github.com/jonbgallant/PowerBIFiddler/releases). It will copy the ```PowerBIFiddler.dll``` and ```Newtonsoft.Json.dll``` files to your local ```C:\Users\{user}\Documents\Fiddler2\Inspectors``` directory.
 
-> The MSI installer may say that it is corrupt or invalid because I haven't signed it with a valid cert.  You can choose to accept the warning and install or use the Zip install option below.
+> If you use Edge or IE, it may tell you that the MSI is corrupt or invalid because I haven't signed it with a valid cert.  You can choose to accept the warning and install or use the Zip install option below.
 
 ### Zip
 Unzip the PowerBIFidder.7z file found on the [releases page](https://github.com/jonbgallant/PowerBIFiddler/releases) to your local ```C:\Users\{user}\Documents\Fiddler2\Inspectors``` directory.
