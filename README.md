@@ -1,7 +1,7 @@
 # PowerBIFiddler
-PowerBIFiddler is a custom [Fiddler](http://www.telerik.com/fiddler) inspector extension that allows you to see Power BI metadata and tile refresh HTTP request payloads in plain text.
+PowerBIFiddler is a custom [Fiddler](http://www.telerik.com/fiddler) inspector extension that allows you to view Power BI metadata and tile refresh HTTP request payloads in plain text.
 
-By default, Power BI sends tile data compressed and base64 encoded. It is difficult to debug - especially when you have a real-time dashboard and data is quicking streaming in.  Without PowerBIFiddler, you'd have to copy that data and manually decode and decompress it using some custom built tool. This extension automatically decodes and decompresses it for you and displays it in a new Fiddler Inspector response tab.
+By default, Power BI sends tile data compressed and base64 encoded. It is difficult to debug - especially when you have a real-time dashboard and data is quicking streaming in.  Without PowerBIFiddler, you'd have to copy that data and manually decode and decompress it using a custom built tool. This extension automatically decodes and decompresses it for you and displays it in a new Fiddler Inspector response tab.
 
 ![](/images/inspector.png)
 
