@@ -268,7 +268,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.5.2"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=395269"
                 }
@@ -645,7 +645,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PowerBIFiddler"
         "ProductCode" = "8:{7D83A501-9501-499F-9271-B38E2244F4D8}"
-        "PackageCode" = "8:{EE9AB156-78C6-4108-ADFE-9CB983A77AC9}"
+        "PackageCode" = "8:{2DFE3E1C-83E7-40F2-BF78-D9231058D732}"
         "UpgradeCode" = "8:{7DDC7796-EF0D-46A7-9DB2-E5C034DAB697}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

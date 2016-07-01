@@ -25,6 +25,8 @@ Run the PowerBIFiddler.msi found on the [releases page](https://github.com/jonbg
 ### Zip
 Unzip the PowerBIFidder.7z file found on the [releases page](https://github.com/jonbgallant/PowerBIFiddler/releases) to your local ```C:\Users\{user}\Documents\Fiddler2\Inspectors``` directory.
 
+Make sure you have [.NET 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) installed.
+
 ## How to Use
 PowerBIFiddler supports two types of requests: metadata and tile refresh.
 
