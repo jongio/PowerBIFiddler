@@ -35,7 +35,7 @@ The metadata url is ```/powerbi/metadata/app?dashboardObjectId={guid}```
 
 ![](/images/metadata.png)
 
-When you navigate that JSON payload with PowerBIFiddler you will see a child "dashboards" node and the default dashboard will have a "tiles" node.
+When you navigate that JSON payload with PowerBIFiddler you will see a child "dashboards" node and the default dashboard will have a "tiles" node, which contains the new decompressed and decoded tileData property.
 
 ![](/images/metadatatiles.png)
 
