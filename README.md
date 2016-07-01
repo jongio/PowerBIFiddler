@@ -32,9 +32,11 @@ PowerBIFiddler supports two types of requests: metadata and tile refresh.
 When you first hit [PowerBI.com](https://app.powerbi.com) it will make a metadata request to get all the metadata required to render Power BI based on your preferences and previous state. This request also contains the tile data from the dashboard you had open when you last closed Power BI. That tile data is also compressed and base64 encoded.
 
 The metadata url is ```/powerbi/metadata/app?dashboardObjectId={guid}```
+
 ![](/images/metadata.png)
 
 When you navigate that JSON payload with PowerBIFiddler you will see a child "dashboards" node and the default dashboard will have a "tiles" node.
+
 ![](/images/metadatatiles.png)
 
 ### Tile Refresh
