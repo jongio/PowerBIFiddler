@@ -30,16 +30,19 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fiddler">
-      <HintPath>..\..\..\..\Program Files (x86)\Fiddler2\Fiddler.exe</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Fiddler2\Fiddler.exe</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Standard">
-      <HintPath>..\..\..\..\Program Files (x86)\Fiddler2\Inspectors\Standard.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Fiddler2\Inspectors\Standard.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,7 +70,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "%25userprofile%25\My Documents\Fiddler2\Inspectors\$(TargetFilename)"
+    <PostBuildEvent>mkdir "%25userprofile%25\My Documents\Fiddler2\Inspectors\"
+copy "$(TargetPath)" "%25userprofile%25\My Documents\Fiddler2\Inspectors\$(TargetFilename)"
 copy "Newtonsoft.Json.dll" "%25userprofile%25\My Documents\Fiddler2\Inspectors\"
 </PostBuildEvent>
   </PropertyGroup>

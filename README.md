@@ -3,7 +3,7 @@ PowerBIFiddler is a custom [Fiddler](http://www.telerik.com/fiddler) inspector e
 
 By default, Power BI sends tile data compressed and base64 encoded. It is difficult to debug - especially when you have a real-time dashboard and data is quicking streaming in.  Without PowerBIFiddler, you'd have to copy that data and manually decode and decompress it using a custom built tool. This extension automatically decodes and decompresses it for you and displays it in a new Fiddler Inspector response tab.
 
-![](/images/inspector.png)
+![](images/inspector.png)
 
 The encoded and compressed version looks like this:
 ```
@@ -35,16 +35,21 @@ When you first hit [PowerBI.com](https://app.powerbi.com) it will make a metadat
 
 The metadata url is ```/powerbi/metadata/app?dashboardObjectId={guid}```
 
-![](/images/metadata.png)
+![](images/metadata.png)
 
 When you navigate that JSON payload with PowerBIFiddler you will see a child "dashboards" node and the default dashboard will have a "tiles" node, which contains the new decompressed and decoded tileData property.
 
-![](/images/metadatatiles.png)
+![](images/metadatatiles.png)
 
 ### Tile Refresh
 When you setup a real-time dashboard, Power BI will send a "subscribe" HTTP request and will get a "tiles" data response.
 
-![](/images/fiddlersessions.png)
+![](images/fiddlersessions.png)
 
 When you click on the "tiles" response you will see the new tileData property in the new "Power BI" inspector tab.
-![](/images/inspector.png)
+![](images/inspector.png)
+
+
+## Development
+ - If you want to build compile the installer project, you'll need to install the [Visual Studio 2015 Installer Project Plugin](https://visualstudiogallery.msdn.microsoft.com/f1cc3f3e-c300-40a7-8797-c509fb8933b9).  If you don't want to compile the installer, then just ignore the unsupported project type warning when you load the solution.
+ - The Fiddler.exe and Standard.dll references might not be mapped in VS correctly. If that is the case, then remove and re-add the references from ```C:\Program Files (x86)\Fiddler2\Fiddler.exe``` and ```C:\Program Files (x86)\Fiddler2\Inspectors\Standard.dll```  
